@@ -22,6 +22,7 @@ searchBtn.addEventListener("click", function() {
 		const feels = data.main.feels_like;
 		const feelsLike = feels - 273.15;
 		const humidity = data.main.humidity;
+		const country = data.sys.country;
 		const wind = data.wind.speed;
 
 		document.querySelector(".city").innerText = "Weather in " + cityName;
@@ -29,17 +30,19 @@ searchBtn.addEventListener("click", function() {
     	document.querySelector(".description").innerText = description;
     	document.querySelector(".temp").innerText = temp.toFixed(2) + "°C";
     	document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
-	document.querySelector(".country").innerText = "Country: " + country;	
+    	document.querySelector(".country").innerText = "Country: " + country;
     	document.querySelector(".feelsLike").innerText = "Feels like: " + feelsLike.toFixed(2) + "°C";
     	document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
     	document.querySelector(".wind").innerText = "Wind speed: " + wind + " km/h";
-    	document.querySelector(".weather").classList.remove("loading");
+    	
     	document.body.style.backgroundImage =
-      "url('https://source.unsplash.com/1600x900/?" + name + "')";
+      "url('https://source.unsplash.com/1600x900/?landscape" + name + "')";
 
 
 	} );
+
 })
+
 
 document.addEventListener('readystatechange', event => { 
 
@@ -53,8 +56,6 @@ document.addEventListener('readystatechange', event => {
        document.querySelector(".weather").classList.remove("loading");
     }
 });
-
-
 
 
 
