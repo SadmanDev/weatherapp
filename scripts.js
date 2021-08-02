@@ -29,6 +29,7 @@ searchBtn.addEventListener("click", function() {
     	document.querySelector(".description").innerText = description;
     	document.querySelector(".temp").innerText = temp.toFixed(2) + "°C";
     	document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
+	document.querySelector(".country").innerText = "Country: " + country;	
     	document.querySelector(".feelsLike").innerText = "Feels like: " + feelsLike.toFixed(2) + "°C";
     	document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
     	document.querySelector(".wind").innerText = "Wind speed: " + wind + " km/h";
@@ -40,6 +41,18 @@ searchBtn.addEventListener("click", function() {
 	} );
 })
 
+document.addEventListener('readystatechange', event => { 
+
+    // When HTML/DOM elements are ready:
+    if (event.target.readyState === "interactive") {   //does same as:  ..addEventListener("DOMContentLoaded"..
+        document.querySelector(".weather").classList.add("loading");
+    }
+
+    // When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
+    if (event.target.readyState === "complete") {
+       document.querySelector(".weather").classList.remove("loading");
+    }
+});
 
 
 
